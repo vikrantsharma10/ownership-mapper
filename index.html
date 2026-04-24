@@ -1,0 +1,1250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 02 — Ownership Mapper | PIS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0f0f0f;
+    --bg-panel: #161616;
+    --bg-panel2: #1a1a1a;
+    --fg: #f0f0f0;
+    --fg-muted: #6a6a6a;
+    --fg-mid: #999;
+    --lime: #c8f135;
+    --lime-dark: #0f0f0f;
+    --border: #2a2a2a;
+    --border-mid: #333;
+    --serif: 'Instrument Serif', Georgia, serif;
+    --sans: 'Inter', sans-serif;
+    --mono: 'JetBrains Mono', 'Courier New', monospace;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ─────────────────────────────────────────────── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 48px;
+  }
+
+  .nav-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--fg-muted);
+  }
+
+  .nav-divider { color: var(--border-mid); }
+
+  .nav-right a {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--lime);
+    text-decoration: none;
+    border: 1px solid var(--lime);
+    padding: 8px 16px;
+    display: inline-block;
+    transition: background 0.15s, color 0.15s;
+  }
+
+  .nav-right a:hover {
+    background: var(--lime);
+    color: var(--lime-dark);
+  }
+
+  /* ── SHARED ──────────────────────────────────────────── */
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--fg-muted);
+    margin-bottom: 32px;
+  }
+
+  h1, h2 {
+    font-family: var(--serif);
+    font-weight: 400;
+    color: var(--fg);
+    line-height: 1.15;
+  }
+
+  h1 { font-size: clamp(48px, 6vw, 80px); }
+  h2 { font-size: clamp(32px, 4vw, 52px); }
+
+  /* ── HERO ─────────────────────────────────────────────── */
+  .hero {
+    padding: 96px 0 80px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--fg-muted);
+    margin-bottom: 28px;
+  }
+
+  .hero h1 { margin-bottom: 28px; max-width: 820px; }
+
+  .hero-body {
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.75;
+    color: var(--fg-mid);
+    max-width: 700px;
+    margin-bottom: 40px;
+  }
+
+  .stat-pills {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 44px;
+  }
+
+  .stat-pill {
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--fg);
+    border: 1px solid var(--border-mid);
+    padding: 8px 16px;
+    background: var(--bg-panel);
+  }
+
+  .btn-primary {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: var(--lime);
+    color: var(--lime-dark);
+    border: none;
+    padding: 16px 32px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: opacity 0.15s;
+  }
+
+  .btn-primary:hover { opacity: 0.88; }
+  .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .btn-primary-full {
+    width: 100%;
+    text-align: center;
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: var(--lime);
+    color: var(--lime-dark);
+    border: none;
+    padding: 18px 32px;
+    cursor: pointer;
+    display: block;
+    transition: opacity 0.15s;
+    margin-top: 32px;
+  }
+
+  .btn-primary-full:hover { opacity: 0.88; }
+  .btn-primary-full:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .btn-outline {
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--lime);
+    border: 1px solid var(--lime);
+    background: transparent;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+  }
+
+  .btn-outline:hover {
+    background: var(--lime);
+    color: var(--lime-dark);
+  }
+
+  /* ── HOW IT WORKS ────────────────────────────────────── */
+  .how {
+    padding: 96px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .how h2 { margin-bottom: 64px; }
+
+  .steps {
+    display: grid;
+    grid-template-columns: 1fr 32px 1fr 32px 1fr;
+    gap: 0;
+    align-items: start;
+  }
+
+  .step-arrow {
+    font-family: var(--mono);
+    font-size: 18px;
+    color: var(--fg-muted);
+    text-align: center;
+    padding-top: 4px;
+  }
+
+  .step {
+    padding: 0;
+  }
+
+  .step-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--lime);
+    margin-bottom: 16px;
+  }
+
+  .step-title {
+    font-family: var(--mono);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--fg);
+    margin-bottom: 16px;
+  }
+
+  .step p {
+    font-family: var(--sans);
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--fg-muted);
+  }
+
+  /* ── WHAT YOU GET ────────────────────────────────────── */
+  .wyg {
+    padding: 96px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .wyg h2 { margin-bottom: 56px; }
+
+  .wyg-panels {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .wyg-panel {
+    background: var(--bg-panel);
+    border: 1px solid var(--border-mid);
+    padding: 40px;
+  }
+
+  .panel-layer {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--fg-muted);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .panel-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--fg-muted);
+    border: 1px solid var(--border-mid);
+    padding: 3px 8px;
+  }
+
+  .wyg-panel h3 {
+    font-family: var(--serif);
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--fg);
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+
+  .wyg-panel > p {
+    font-family: var(--sans);
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--fg-muted);
+    margin-bottom: 24px;
+  }
+
+  .wyg-panel ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .wyg-panel ul li {
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--fg-mid);
+    padding-left: 16px;
+    position: relative;
+    line-height: 1.5;
+  }
+
+  .wyg-panel ul li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--lime);
+    font-family: var(--mono);
+  }
+
+  /* ── TOOL ────────────────────────────────────────────── */
+  .tool {
+    padding: 96px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .tool h2 { margin-bottom: 16px; }
+
+  .tool-subtext {
+    font-family: var(--sans);
+    font-size: 15px;
+    color: var(--fg-muted);
+    max-width: 640px;
+    margin-bottom: 56px;
+    line-height: 1.75;
+  }
+
+  /* Form layout */
+  .form-row-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .field-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--fg-muted);
+  }
+
+  input[type="text"],
+  textarea,
+  select {
+    background: var(--bg-panel);
+    border: 1px solid var(--border-mid);
+    color: var(--fg);
+    font-family: var(--mono);
+    font-size: 13px;
+    padding: 12px 14px;
+    width: 100%;
+    outline: none;
+    transition: border-color 0.15s;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+
+  input[type="text"]:focus,
+  textarea:focus,
+  select[class]:focus {
+    border-color: var(--lime);
+  }
+
+  input::placeholder, textarea::placeholder {
+    color: var(--fg-muted);
+    font-family: var(--mono);
+    font-size: 12px;
+  }
+
+  select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236a6a6a' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+    cursor: pointer;
+  }
+
+  select option { background: #1a1a1a; color: var(--fg); }
+
+  /* Steps table */
+  .steps-table-wrap {
+    margin: 32px 0 16px;
+    border: 1px solid var(--border-mid);
+    overflow-x: auto;
+  }
+
+  .steps-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 900px;
+  }
+
+  .steps-table thead tr {
+    border-bottom: 1px solid var(--border-mid);
+    background: var(--bg-panel2);
+  }
+
+  .steps-table th {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--fg-muted);
+    padding: 12px 14px;
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .steps-table td { padding: 4px 4px; border-bottom: 1px solid var(--border); }
+  .steps-table tr:last-child td { border-bottom: none; }
+
+  .steps-table td input,
+  .steps-table td select {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    font-size: 12px;
+    padding: 10px 10px;
+    width: 100%;
+    color: var(--fg);
+  }
+
+  .steps-table td select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236a6a6a' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    padding-right: 28px;
+  }
+
+  .steps-table td select:focus {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236a6a6a' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+  }
+
+  .steps-table td input:focus,
+  .steps-table td select:focus {
+    background: var(--bg-panel2);
+    outline: 1px solid var(--lime);
+    border-color: transparent;
+  }
+
+  .steps-table td.del-col {
+    width: 32px;
+    text-align: center;
+    padding: 0;
+  }
+
+  .del-btn {
+    background: none;
+    border: none;
+    color: var(--fg-muted);
+    cursor: pointer;
+    font-size: 16px;
+    padding: 4px 8px;
+    font-family: var(--mono);
+    transition: color 0.15s;
+  }
+
+  .del-btn:hover { color: #e74c3c; }
+
+  .add-step-btn {
+    margin-top: 0;
+  }
+
+  .optional-fields {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 88px;
+    line-height: 1.6;
+  }
+
+  .disclaimer {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--fg-muted);
+    margin-top: 20px;
+    line-height: 1.7;
+  }
+
+  .tip-line {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--fg-muted);
+    margin-top: 10px;
+    line-height: 1.7;
+  }
+
+  .tip-line strong {
+    color: var(--fg-mid);
+    font-weight: 700;
+  }
+
+  /* ── OUTPUT PANELS ───────────────────────────────────── */
+  .output-section {
+    padding: 0 0 96px;
+    display: none;
+  }
+
+  .output-section.visible { display: block; }
+
+  .output-panel {
+    background: var(--bg-panel);
+    border: 1px solid var(--border-mid);
+    margin-bottom: 24px;
+  }
+
+  .output-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--border-mid);
+    background: var(--bg-panel2);
+  }
+
+  .panel-header-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--fg);
+  }
+
+  .panel-sq {
+    color: var(--lime);
+    font-size: 14px;
+    line-height: 1;
+  }
+
+  .panel-header-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .output-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--fg-muted);
+    border: 1px solid var(--border-mid);
+    padding: 4px 10px;
+  }
+
+  .copy-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--fg-muted);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.15s;
+    padding: 4px 8px;
+  }
+
+  .copy-btn:hover { color: var(--fg); }
+  .copy-btn.copied { color: var(--lime); }
+
+  .copy-btn svg { transition: opacity 0.15s; }
+
+  .output-body {
+    padding: 32px 28px;
+    font-family: var(--mono);
+    font-size: 13px;
+    line-height: 1.8;
+    color: var(--fg);
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+
+  .output-attribution {
+    padding: 16px 28px;
+    border-top: 1px solid var(--border);
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--fg-muted);
+    letter-spacing: 0.05em;
+  }
+
+  .output-attribution a {
+    color: var(--lime);
+    text-decoration: none;
+  }
+
+  .output-attribution a:hover { text-decoration: underline; }
+
+  /* Loading */
+  .loading-indicator {
+    display: none;
+    align-items: center;
+    gap: 12px;
+    padding: 24px 0;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--fg-muted);
+    letter-spacing: 0.08em;
+  }
+
+  .loading-indicator.visible { display: flex; }
+
+  .spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid var(--border-mid);
+    border-top-color: var(--lime);
+    animation: spin 0.7s linear infinite;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .error-msg {
+    display: none;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: #e74c3c;
+    padding: 16px;
+    border: 1px solid #3d1a1a;
+    background: #1a0a0a;
+    margin-top: 16px;
+    letter-spacing: 0.05em;
+  }
+
+  .error-msg.visible { display: block; }
+
+  /* ── FOOTER ──────────────────────────────────────────── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 20px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .footer-left {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--fg-muted);
+  }
+
+  .footer-right a {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--lime);
+    text-decoration: none;
+    letter-spacing: 0.06em;
+  }
+
+  .footer-right a:hover { text-decoration: underline; }
+
+  /* ── RESPONSIVE ──────────────────────────────────────── */
+  @media (max-width: 900px) {
+    nav, footer { padding: 14px 24px; }
+    .container { padding: 0 24px; }
+    .steps { grid-template-columns: 1fr; gap: 32px; }
+    .step-arrow { display: none; }
+    .wyg-panels { grid-template-columns: 1fr; }
+    .form-row-2 { grid-template-columns: 1fr; }
+  }
+
+  /* Hero accent */
+  .hero-accent {
+    color: var(--lime);
+    font-style: italic;
+  }
+
+  /* ── PROCESS DETAILS HEADER ─────────────────────────── */
+  .process-section-header {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin-bottom: 32px;
+    margin-top: 8px;
+  }
+
+  .process-section-header span {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--fg-muted);
+    border-left: 2px solid var(--lime);
+    padding-left: 12px;
+  }
+
+  .ex-attribution a:hover { text-decoration: underline; }
+
+  /* Output formatting helpers */
+  .output-body b { color: var(--lime); font-weight: 700; }
+  .output-body em { color: var(--fg-mid); font-style: normal; }
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-left">
+    <span>PIS / V1.0</span>
+    <span class="nav-divider">|</span>
+    <span>M02</span>
+  </div>
+  <div class="nav-right">
+    <a href="#tool">RUN DIAGNOSIS ↓</a>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-eyebrow">MODULE 02 — Ownership Mapper: INTERNAL VS EXTERNAL PROCESS STEPS</div>
+    <h1>Know what your team owns.<br><em class="hero-accent">And what it doesn't.</em></h1>
+    <p class="hero-body">Fill in your process details and get an instant split of every step by who actually controls it — your team, another internal team or an external vendor. Internal steps get improvement targets. External steps get SLA recommendations and escalation paths. Most process owners hit a wall after optimising everything within reach; the bottleneck was never their team, it was sitting one step outside it. This tells you exactly where to look next.</p>
+    <div class="stat-pills">
+      <div class="stat-pill">2 OUTPUT LAYERS</div>
+      <div class="stat-pill">150W EXECUTIVE PUNCH</div>
+      <div class="stat-pill">&lt;60S TIME TO DIAGNOSIS</div>
+    </div>
+    <a href="#tool" class="btn-primary">RUN YOUR DIAGNOSIS ↓</a>
+  </div>
+</section>
+
+<!-- ── HOW IT WORKS ── -->
+<section class="how">
+  <div class="container">
+    <div class="section-label">HOW IT WORKS</div>
+    <h2>Three steps. One clear picture.</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">STEP 01 /</div>
+        <div class="step-title">Enter your process steps</div>
+        <p>Add each step in the table — one row per step. Name who does it, whether they sit inside your team, in another internal team or with an external vendor, and how long it typically takes. If steps run at the same time, note that too. Write it the way you'd explain it to a new joiner.</p>
+      </div>
+      <div class="step-arrow">→</div>
+      <div class="step">
+        <div class="step-num">STEP 02 /</div>
+        <div class="step-title">AI splits the ownership</div>
+        <p>The engine classifies every step as Direct Internal, Cross-functional Internal, External Vendor or Shared — identifies your critical path, flags the hidden queue time nobody is tracking and maps which delays are yours to fix versus yours to negotiate.</p>
+      </div>
+      <div class="step-arrow">→</div>
+      <div class="step">
+        <div class="step-num">STEP 03 /</div>
+        <div class="step-title">Act on the split</div>
+        <p>Two outputs — a 150-word executive summary with your SLA gap and top two fixes, and a full team-level diagnosis with every step mapped, every lever named and fixes sequenced by critical path impact.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── WHAT YOU GET ── -->
+<section class="wyg">
+  <div class="container">
+    <div class="section-label">WHAT YOU GET</div>
+    <h2>Two layers. One truth.</h2>
+    <div class="wyg-panels">
+      <div class="wyg-panel">
+        <div class="panel-layer">
+          Layer 01 — Executive
+          <span class="panel-tag">~150 WORDS</span>
+        </div>
+        <h3>The 150-word punch.</h3>
+        <p>A crisp, board-ready paragraph your VP can drop directly into a QBR, Slack update or quarterly review. No filtering required.</p>
+        <ul>
+          <li>Current SLA vs what's actually achievable</li>
+          <li>Critical path owner — the single step setting your ceiling</li>
+          <li>Top two fixes with effort rating</li>
+          <li>One-line direction for internal vs external teams</li>
+        </ul>
+      </div>
+      <div class="wyg-panel">
+        <div class="panel-layer">
+          Layer 02 — Team Diagnosis
+          <span class="panel-tag">FOR YOUR TEAM</span>
+        </div>
+        <h3>The full picture, for the people doing the work.</h3>
+        <p>A structured breakdown your process owner or ops lead can action immediately — without a consultant, without a workshop.</p>
+        <ul>
+          <li>Full ownership map — every step tagged Direct Internal / Cross-functional / External Vendor / Shared</li>
+          <li>Who owns the delay — Yours to Fix / Yours to Influence / Yours to Negotiate</li>
+          <li>The time nobody is tracking — queue gap flagged per external step</li>
+          <li>Fixes sequenced by critical path impact — effort rating and dependency flag built in</li>
+          <li>Stacked impact table — conservative SLA reduction per fix</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TOOL ── -->
+<section class="tool" id="tool">
+  <div class="container">
+    <div class="section-label">MODULE 02 — RUN DIAGNOSIS</div>
+    <h2>Your process. Split by who owns it.</h2>
+    <p class="tool-subtext">Fill in the table below — one row per step. The more specific you are about who does what and how long it takes, the sharper the ownership split and the more precise your SLA reduction estimate will be.</p>
+
+    <div class="process-section-header">
+      <span>Your Process Details</span>
+    </div>
+
+    <div class="form-row-2">
+      <div class="field-group">
+        <label class="field-label" for="processName">PROCESS NAME</label>
+        <input type="text" id="processName" placeholder="e.g. B2B Software Client Onboarding">
+      </div>
+      <div class="field-group">
+        <label class="field-label" for="currentSla">CURRENT SLA TARGET</label>
+        <input type="text" id="currentSla" placeholder="e.g. 10 days">
+      </div>
+    </div>
+
+    <div class="form-row-2">
+      <div class="field-group">
+        <label class="field-label" for="userRole">YOUR ROLE IN THIS PROCESS</label>
+        <select id="userRole">
+          <option value="Process owner">Process owner</option>
+          <option value="Ops manager">Ops manager</option>
+          <option value="Team lead">Team lead</option>
+          <option value="VP or Director">VP or Director</option>
+        </select>
+      </div>
+      <div class="field-group">
+        <label class="field-label" for="parallelMode">DO STEPS RUN IN PARALLEL OR SEQUENTIALLY?</label>
+        <select id="parallelMode">
+          <option value="Parallel after trigger">Parallel after trigger</option>
+          <option value="Fully sequential">Fully sequential</option>
+          <option value="Mixed">Mixed</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Steps table -->
+    <div class="steps-table-wrap">
+      <table class="steps-table" id="stepsTable">
+        <thead>
+          <tr>
+            <th style="width:28%">STEP DESCRIPTION</th>
+            <th style="width:18%">WHO DOES THIS</th>
+            <th style="width:20%">OWNERSHIP TYPE</th>
+            <th style="width:14%">TIME TAKEN</th>
+            <th style="width:16%">AUTOMATED?</th>
+            <th style="width:4%"></th>
+          </tr>
+        </thead>
+        <tbody id="stepsBody">
+          <tr>
+            <td><input type="text" placeholder="e.g. Legal sends NDA and compliance docs to client"></td>
+            <td><input type="text" placeholder="e.g. Legal team"></td>
+            <td>
+              <select>
+                <option>Direct Internal</option>
+                <option>Cross-functional Internal</option>
+                <option>External Vendor</option>
+                <option>Shared</option>
+              </select>
+            </td>
+            <td><input type="text" placeholder="e.g. 48 hours"></td>
+            <td>
+              <select>
+                <option>Manual</option>
+                <option>Automated</option>
+                <option>Partially automated</option>
+              </select>
+            </td>
+            <td class="del-col"><button class="del-btn" onclick="deleteRow(this)">×</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <button class="btn-outline add-step-btn" onclick="addRow()">+ ADD ANOTHER STEP</button>
+
+    <div class="optional-fields">
+      <div class="field-group">
+        <label class="field-label" for="breakPoints">WHERE DOES THIS PROCESS MOST COMMONLY BREAK OR SLOW DOWN?</label>
+        <textarea id="breakPoints" placeholder="e.g. Data migration vendor goes silent after receiving the request; client sign-off step is unpredictable"></textarea>
+      </div>
+      <div class="field-group">
+        <label class="field-label" for="targetSla">WHAT SLA ARE YOU TRYING TO HIT?</label>
+        <input type="text" id="targetSla" placeholder="e.g. 7 days">
+      </div>
+    </div>
+
+    <p class="disclaimer">Analyses are benchmarked against best industry practices and the author's operational experience. Treat this as your thinking aid — not a ready-made fix.</p>
+    <p class="tip-line"><strong>TIP —</strong> Be specific about ownership type — 'another internal team' and 'external vendor' need a completely different fix. That distinction is exactly what this tool is built to surface.</p>
+
+    <button class="btn-primary-full" id="runBtn" onclick="runDiagnosis()">RUN DIAGNOSIS →</button>
+
+    <div class="loading-indicator" id="loadingIndicator">
+      <div class="spinner"></div>
+      <span>Splitting ownership and mapping your critical path...</span>
+    </div>
+
+    <div class="error-msg" id="errorMsg"></div>
+  </div>
+</section>
+
+<!-- ── OUTPUT PANELS ── -->
+<section class="output-section container" id="outputSection">
+  <!-- Layer 01 -->
+  <div class="output-panel" id="panel1">
+    <div class="output-panel-header">
+      <div class="panel-header-left">
+        <span class="panel-sq">■</span>
+        LAYER 01 — EXECUTIVE
+      </div>
+      <div class="panel-header-right">
+        <span class="output-tag">~150 WORDS</span>
+        <button class="copy-btn" id="copyBtn1" onclick="copyPanel('outputText1','copyBtn1','copy_layer1')">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="4" y="4" width="9" height="9" rx="0" stroke="currentColor" stroke-width="1.2"/>
+            <path d="M2 10V2h8" stroke="currentColor" stroke-width="1.2"/>
+          </svg>
+          COPY
+        </button>
+      </div>
+    </div>
+    <div class="output-body" id="outputText1"></div>
+    <div class="output-attribution">
+      PIS / M02 — Ownership Mapper: Internal vs External Process Steps — Built by <a href="https://www.linkedin.com/in/vikrantsharma10/" target="_blank" rel="noopener">Vikrant Sharma</a>
+    </div>
+  </div>
+
+  <!-- Layer 02 -->
+  <div class="output-panel" id="panel2">
+    <div class="output-panel-header">
+      <div class="panel-header-left">
+        <span class="panel-sq">■</span>
+        LAYER 02 — TEAM DIAGNOSIS
+      </div>
+      <div class="panel-header-right">
+        <span class="output-tag">FOR YOUR TEAM</span>
+        <button class="copy-btn" id="copyBtn2" onclick="copyPanel('outputText2','copyBtn2','copy_layer2')">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="4" y="4" width="9" height="9" rx="0" stroke="currentColor" stroke-width="1.2"/>
+            <path d="M2 10V2h8" stroke="currentColor" stroke-width="1.2"/>
+          </svg>
+          COPY
+        </button>
+      </div>
+    </div>
+    <div class="output-body" id="outputText2"></div>
+    <div class="output-attribution">
+      PIS / M02 — Ownership Mapper: Internal vs External Process Steps — Built by <a href="https://www.linkedin.com/in/vikrantsharma10/" target="_blank" rel="noopener">Vikrant Sharma</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-left">PIS / V1.0 — MODULE 02 — Ownership Mapper: INTERNAL VS EXTERNAL PROCESS STEPS</div>
+  <div class="footer-right"><a href="https://www.linkedin.com/in/vikrantsharma10/" target="_blank" rel="noopener">Built by Vikrant Sharma</a></div>
+</footer>
+
+<script>
+  // ════════════════════════════════════════════════════════════════
+  // PIS / MODULE 02 — Ownership Mapper
+  // Handover file for Claude Code
+  // ────────────────────────────────────────────────────────────────
+  // HOW TO WIRE UP:
+  // 1. API CALL — search "// API CALL GOES HERE" to find the exact
+  //    insertion point inside runDiagnosis(). Replace the stub with
+  //    a real fetch() to the Anthropic Messages API.
+  // 2. SUPABASE EVENTS — search "// SUPABASE EVENT:" to find all
+  //    three trigger points: run_diagnosis, copy_layer1, copy_layer2.
+  //    Replace logEvent() body with your Supabase client insert.
+  // 3. ENV VARS needed: ANTHROPIC_API_KEY, SUPABASE_URL, SUPABASE_ANON_KEY
+  // ════════════════════════════════════════════════════════════════
+
+  // ── Row management ──────────────────────────────────────
+  function deleteRow(btn) {
+    const row = btn.closest('tr');
+    const tbody = document.getElementById('stepsBody');
+    if (tbody.rows.length > 1) row.remove();
+  }
+
+  function addRow() {
+    const tbody = document.getElementById('stepsBody');
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td><input type="text" placeholder="e.g. Legal sends NDA and compliance docs to client"></td>
+      <td><input type="text" placeholder="e.g. Legal team"></td>
+      <td>
+        <select>
+          <option>Direct Internal</option>
+          <option>Cross-functional Internal</option>
+          <option>External Vendor</option>
+          <option>Shared</option>
+        </select>
+      </td>
+      <td><input type="text" placeholder="e.g. 48 hours"></td>
+      <td>
+        <select>
+          <option>Manual</option>
+          <option>Automated</option>
+          <option>Partially automated</option>
+        </select>
+      </td>
+      <td class="del-col"><button class="del-btn" onclick="deleteRow(this)">×</button></td>
+    `;
+    tbody.appendChild(tr);
+    // focus new row
+    tr.querySelector('input').focus();
+  }
+
+  // ── Collect form data ────────────────────────────────────
+  function collectSteps() {
+    const rows = document.querySelectorAll('#stepsBody tr');
+    return Array.from(rows).map((row, i) => {
+      const inputs = row.querySelectorAll('input');
+      const selects = row.querySelectorAll('select');
+      return {
+        index: i + 1,
+        description: inputs[0].value.trim(),
+        who: inputs[1].value.trim(),
+        ownership: selects[0].value,
+        time: inputs[2].value.trim(),
+        automated: selects[1].value,
+      };
+    }).filter(r => r.description);
+  }
+
+  // ── Supabase event logging ──────────────────────────────────
+  // Replace this function body with your Supabase insert call.
+  // Table suggestion: pis_events (id, event_type, created_at, user_id, metadata)
+  // Example:
+  //   await supabase.from('pis_events').insert({ event_type: eventType, created_at: new Date() });
+  async function logEvent(eventType) {
+    console.log('[PIS Event — stub]', eventType, new Date().toISOString());
+    // SUPABASE EVENT: [eventType] — wire Supabase insert here
+  }
+
+  // ── Copy panel ───────────────────────────────────────────
+  function copyPanel(textId, btnId, eventType) {
+    const text = document.getElementById(textId).innerText;
+    navigator.clipboard.writeText(text).then(() => {
+      const btn = document.getElementById(btnId);
+      btn.classList.add('copied');
+      btn.innerHTML = `
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7l4 4 6-6" stroke="#c8f135" stroke-width="1.5" stroke-linecap="square"/></svg>
+        COPIED
+      `;
+      // SUPABASE EVENT: copy_layer1 or copy_layer2 (value of eventType param)
+      logEvent(eventType);
+      setTimeout(() => {
+        btn.classList.remove('copied');
+        btn.innerHTML = `
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="4" y="4" width="9" height="9" rx="0" stroke="currentColor" stroke-width="1.2"/>
+            <path d="M2 10V2h8" stroke="currentColor" stroke-width="1.2"/>
+          </svg>
+          COPY
+        `;
+      }, 2000);
+    });
+  }
+
+  // ── Parse AI output ──────────────────────────────────────
+  function parseOutput(text) {
+    // Split on Layer 01 / Layer 02 markers
+    const l1Match = text.match(/LAYER\s*0?1[:\s\-—]*([\s\S]*?)(?=LAYER\s*0?2|$)/i);
+    const l2Match = text.match(/LAYER\s*0?2[:\s\-—]*([\s\S]*?)$/i);
+    return {
+      layer1: l1Match ? l1Match[1].trim() : text,
+      layer2: l2Match ? l2Match[1].trim() : '',
+    };
+  }
+
+  // ── Main diagnosis ───────────────────────────────────────
+  async function runDiagnosis() {
+    const steps = collectSteps();
+    if (steps.length === 0) {
+      alert('Please add at least one process step before running the diagnosis.');
+      return;
+    }
+
+    const processName = document.getElementById('processName').value.trim() || 'Unnamed process';
+    const currentSla = document.getElementById('currentSla').value.trim() || 'Not specified';
+    const userRole = document.getElementById('userRole').value;
+    const parallelMode = document.getElementById('parallelMode').value;
+    const breakPoints = document.getElementById('breakPoints').value.trim();
+    const targetSla = document.getElementById('targetSla').value.trim();
+
+    // UI state
+    const btn = document.getElementById('runBtn');
+    const loader = document.getElementById('loadingIndicator');
+    const errMsg = document.getElementById('errorMsg');
+    const outputSection = document.getElementById('outputSection');
+
+    btn.disabled = true;
+    btn.textContent = 'RUNNING DIAGNOSIS...';
+    loader.classList.add('visible');
+    errMsg.classList.remove('visible');
+    outputSection.classList.remove('visible');
+
+    // Scroll to loader
+    loader.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+    // Build prompt
+    const stepsText = steps.map(s =>
+      `Step ${s.index}: ${s.description} | Who: ${s.who} | Ownership: ${s.ownership} | Time: ${s.time} | Automation: ${s.automated}`
+    ).join('\n');
+
+    const userPrompt = `
+Process Name: ${processName}
+Current SLA: ${currentSla}
+Target SLA: ${targetSla || 'Not specified'}
+User Role: ${userRole}
+Step Execution Mode: ${parallelMode}
+Common Breakdown Points: ${breakPoints || 'None provided'}
+
+PROCESS STEPS:
+${stepsText}
+
+---
+
+Please produce a structured ownership diagnosis in two clearly labelled sections:
+
+LAYER 01 — EXECUTIVE (~150 words):
+A crisp, board-ready executive summary covering: current SLA vs achievable SLA, the critical path owner (single step setting the ceiling), top two fixes with effort rating (High/Medium/Low), and a one-line direction for internal vs external teams.
+
+LAYER 02 — TEAM DIAGNOSIS:
+A detailed structured breakdown including:
+1. OWNERSHIP MAP — every step tagged as Direct Internal / Cross-functional Internal / External Vendor / Shared
+2. DELAY OWNERSHIP — for each step: Yours to Fix / Yours to Influence / Yours to Negotiate
+3. HIDDEN QUEUE GAP — queue time flagged per external step (time waiting vs time doing)
+4. FIXES SEQUENCED BY CRITICAL PATH IMPACT — each fix with effort rating (High/Medium/Low) and dependency flag
+5. STACKED IMPACT TABLE — conservative SLA reduction estimate per fix (in hours or days), cumulative total
+
+Use clear headers, concise language, and mono-style formatting (no markdown bold or italics needed). Write for an ops professional who will act on this immediately.
+`.trim();
+
+    try {
+      // API CALL GOES HERE
+      // Wire in the Anthropic API call using the userPrompt and system prompt below.
+      // Expected: POST to https://api.anthropic.com/v1/messages
+      // Model: claude-3-5-haiku-20241022 (or your preferred model)
+      // System prompt:
+      //   "You are an operations process intelligence engine for the Process Intelligence Suite (PIS).
+      //    You are expert in process ownership analysis, SLA reduction, critical path mapping, and
+      //    operational bottleneck diagnosis. Produce two outputs:
+      //    1. A ~150-word executive summary (LAYER 01) — board-ready, precise, actionable.
+      //    2. A full team-level diagnosis (LAYER 02) using the ownership framework:
+      //       Direct Internal / Cross-functional Internal / External Vendor / Shared.
+      //       Include: delay ownership (Yours to Fix / Influence / Negotiate), hidden queue gap,
+      //       fixes sequenced by critical path impact with effort ratings, stacked SLA impact table.
+      //    Label sections clearly as LAYER 01 — EXECUTIVE and LAYER 02 — TEAM DIAGNOSIS."
+      // Body: { model, max_tokens: 2048, system, messages: [{ role: 'user', content: userPrompt }] }
+      // On success, pass response text to parseOutput() and set outputText1 / outputText2.
+
+      const response = '[STUBBED — replace with actual API response text]';
+
+      const parsed = parseOutput(response);
+
+      document.getElementById('outputText1').textContent = parsed.layer1;
+      document.getElementById('outputText2').textContent = parsed.layer2 || response;
+
+      outputSection.classList.add('visible');
+      outputSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+      // SUPABASE EVENT: run_diagnosis
+
+    } catch(err) {
+      errMsg.textContent = 'Error: ' + (err.message || 'Something went wrong. Please try again.');
+      errMsg.classList.add('visible');
+      console.error(err);
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'RUN DIAGNOSIS →';
+      loader.classList.remove('visible');
+    }
+  }
+</script>
+
+</body>
+</html>
