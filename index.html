@@ -1100,8 +1100,11 @@
   // Example:
   //   await supabase.from('pis_events').insert({ event_type: eventType, created_at: new Date() });
   async function logEvent(eventType) {
-    console.log('[PIS Event — stub]', eventType, new Date().toISOString());
-    // SUPABASE EVENT: [eventType] — wire Supabase insert here
+    fetch('/api/log-event', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ eventType }),
+    }).catch(() => {});
   }
 
   // ── Copy panel ───────────────────────────────────────────
