@@ -1205,24 +1205,17 @@ Use clear headers, concise language, and mono-style formatting (no markdown bold
 `.trim();
 
     try {
-      // API CALL GOES HERE
-      // Wire in the Anthropic API call using the userPrompt and system prompt below.
-      // Expected: POST to https://api.anthropic.com/v1/messages
-      // Model: claude-3-5-haiku-20241022 (or your preferred model)
-      // System prompt:
-      //   "You are an operations process intelligence engine for the Process Intelligence Suite (PIS).
-      //    You are expert in process ownership analysis, SLA reduction, critical path mapping, and
-      //    operational bottleneck diagnosis. Produce two outputs:
-      //    1. A ~150-word executive summary (LAYER 01) — board-ready, precise, actionable.
-      //    2. A full team-level diagnosis (LAYER 02) using the ownership framework:
-      //       Direct Internal / Cross-functional Internal / External Vendor / Shared.
-      //       Include: delay ownership (Yours to Fix / Influence / Negotiate), hidden queue gap,
-      //       fixes sequenced by critical path impact with effort ratings, stacked SLA impact table.
-      //    Label sections clearly as LAYER 01 — EXECUTIVE and LAYER 02 — TEAM DIAGNOSIS."
-      // Body: { model, max_tokens: 2048, system, messages: [{ role: 'user', content: userPrompt }] }
-      // On success, pass response text to parseOutput() and set outputText1 / outputText2.
-
-      const response = '[STUBBED — replace with actual API response text]';
+      const apiRes = await fetch('/api/diagnose', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ userPrompt }),
+      });
+      if (!apiRes.ok) {
+        const errData = await apiRes.json().catch(() => ({}));
+        throw new Error(errData.error || `Request failed (${apiRes.status})`);
+      }
+      const data = await apiRes.json();
+      const response = data.text;
 
       const parsed = parseOutput(response);
 
@@ -1232,7 +1225,7 @@ Use clear headers, concise language, and mono-style formatting (no markdown bold
       outputSection.classList.add('visible');
       outputSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-      // SUPABASE EVENT: run_diagnosis
+      logEvent('run_diagnosis');
 
     } catch(err) {
       errMsg.textContent = 'Error: ' + (err.message || 'Something went wrong. Please try again.');
