@@ -1133,7 +1133,7 @@
 
   // ── Copy panel ───────────────────────────────────────────
   function copyPanel(textId, btnId, eventType) {
-    const text = document.getElementById(textId).innerText;
+        const text = document.getElementById(textId).innerText + '\n\nBuilt by Vikrant Sharma — https://www.linkedin.com/in/vikrantsharma10/';
     navigator.clipboard.writeText(text).then(() => {
       const btn = document.getElementById(btnId);
       btn.classList.add('copied');
