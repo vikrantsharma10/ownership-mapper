@@ -764,6 +764,30 @@
   /* Output formatting helpers */
   .output-body b { color: var(--lime); font-weight: 700; }
   .output-body em { color: var(--fg-mid); font-style: normal; }
+   .output-body .output-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-family: var(--mono);
+    font-size: 12px;
+  }
+  .output-body .output-table th,
+  .output-body .output-table td {
+    border: 1px solid var(--border-mid);
+    padding: 8px 12px;
+    text-align: left;
+    line-height: 1.5;
+  }
+  .output-body .output-table th {
+    background: var(--bg-panel2);
+    color: var(--lime);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    font-size: 11px;
+    white-space: nowrap;
+  }
+  .output-body .output-table td { color: var(--fg-mid); }
+  .output-body .output-table tr:nth-child(even) td { background: var(--bg-panel2); }
 </style>
 </head>
 <body>
@@ -1132,6 +1156,54 @@
     });
   }
 
+   // ── Output rendering ─────────────────────────────────────
+  function escapeHtml(str) {
+    return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  function parseTableRow(line) {
+    return line.trim().replace(/^\||\|$/g, '').split('|');
+  }
+
+  function isSeparatorRow(line) {
+    return parseTableRow(line).every(cell => /^[\s\-:]+$/.test(cell));
+  }
+
+  function buildHtmlTable(lines) {
+    const headerCells = parseTableRow(lines[0]);
+    const dataLines = lines.slice(1).filter(l => !isSeparatorRow(l));
+    let t = '<table class="output-table"><thead><tr>';
+    headerCells.forEach(c => { t += `<th>${escapeHtml(c.trim())}</th>`; });
+    t += '</tr></thead><tbody>';
+    dataLines.forEach(row => {
+      t += '<tr>';
+      parseTableRow(row).forEach(c => { t += `<td>${escapeHtml(c.trim())}</td>`; });
+      t += '</tr>';
+    });
+    return t + '</tbody></table>';
+  }
+
+  function renderOutput(text) {
+    const lines = text.split('\n');
+    let html = '';
+    let i = 0;
+    while (i < lines.length) {
+      const trimmed = lines[i].trim();
+      if (trimmed.startsWith('|') && trimmed.endsWith('|')) {
+        const block = [];
+        while (i < lines.length && lines[i].trim().startsWith('|') && lines[i].trim().endsWith('|')) {
+          block.push(lines[i]);
+          i++;
+        }
+        html += buildHtmlTable(block);
+      } else {
+        html += escapeHtml(lines[i]) + '\n';
+        i++;
+      }
+    }
+    return html;
+  }
+
   // ── Parse AI output ──────────────────────────────────────
   function parseOutput(text) {
     // Split on Layer 01 / Layer 02 markers
@@ -1222,8 +1294,8 @@ Use clear headers, concise language, and mono-style formatting (no markdown bold
 
       const parsed = parseOutput(response);
 
-      document.getElementById('outputText1').textContent = parsed.layer1;
-      document.getElementById('outputText2').textContent = parsed.layer2 || response;
+      document.getElementById('outputText1').innerHTML = renderOutput(parsed.layer1);
+      document.getElementById('outputText2').innerHTML = renderOutput(parsed.layer2 || response);
 
       outputSection.classList.add('visible');
       outputSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
