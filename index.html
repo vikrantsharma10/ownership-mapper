@@ -764,7 +764,7 @@
   /* Output formatting helpers */
   .output-body b { color: var(--lime); font-weight: 700; }
   .output-body em { color: var(--fg-mid); font-style: normal; }
-   .output-body .output-table {
+  .output-body .output-table {
     width: 100%;
     border-collapse: collapse;
     margin: 12px 0;
@@ -855,16 +855,16 @@
       <div class="wyg-panel">
         <div class="panel-layer">
           Layer 01 — Executive
-          <span class="panel-tag">~150 WORDS</span>
+          <span class="panel-tag">REALITY CHECK</span>
         </div>
         <h3>The reality check.</h3>
         <p>A sharp, board-ready output your VP can drop directly into a QBR or quarterly review. Sequenced for who needs to read it first.</p>
         <ul>
           <li>Reality check — is your SLA target achievable without an external conversation</li>
-<li>Gap analysis table ranked by recoverable time per step</li>
-<li>Category of problem named per top bottleneck; design, capacity or scheduling</li>
-<li>Five diagnostic questions per top two steps as conversation starters</li>
-<li>Honest ceiling — what's achievable internally versus what requires negotiation</li>
+          <li>Gap analysis table ranked by recoverable time per step</li>
+          <li>Category of problem named per top bottleneck; design, capacity or scheduling</li>
+          <li>Five diagnostic questions per top two steps as conversation starters</li>
+          <li>Honest ceiling — what's achievable internally versus what requires negotiation</li>
         </ul>
       </div>
       <div class="wyg-panel">
@@ -875,11 +875,11 @@
         <h3>The full gap breakdown, for the people doing the work.</h3>
         <p>A structured breakdown your process owner or ops lead can action immediately — without a consultant, without a workshop.</p>
         <ul>
-        <li>Full ownership map — every step tagged Direct Internal / Cross-functional / External Vendor / Shared</li>
-<li>Elapsed time versus actual task time gap per step</li>
-<li>Where AI can reduce the gap — one specific suggestion per eligible step</li>
-<li>Who owns the delay — Yours to Fix / Yours to Influence / Yours to Negotiate</li>
-<li>Two to three directional fixes sequenced by gap size and ownership type</li>
+          <li>Full ownership map — every step tagged Direct Internal / Cross-functional / External Vendor / Shared</li>
+          <li>Elapsed time versus actual task time gap per step</li>
+          <li>Where AI can reduce the gap — one specific suggestion per eligible step</li>
+          <li>Who owns the delay — Yours to Fix / Yours to Influence / Yours to Negotiate</li>
+          <li>Two to three directional fixes sequenced by gap size and ownership type</li>
         </ul>
       </div>
     </div>
@@ -933,45 +933,45 @@
       <table class="steps-table" id="stepsTable">
         <thead>
           <tr>
-  <th style="width:22%">STEP DESCRIPTION</th>
-  <th style="width:14%">WHO DOES THIS</th>
-  <th style="width:16%">OWNERSHIP TYPE</th>
-  <th style="width:10%">SLA / TAT</th>
-  <th style="width:10%">ACTUAL TIME</th>
-  <th style="width:13%">STEP EXECUTION</th>
-  <th style="width:11%">HANDOFF TRIGGER</th>
-  <th style="width:4%"></th>
-</tr>
+            <th style="width:22%">STEP DESCRIPTION</th>
+            <th style="width:14%">WHO DOES THIS</th>
+            <th style="width:16%">OWNERSHIP TYPE</th>
+            <th style="width:10%">SLA / TAT</th>
+            <th style="width:10%">ACTUAL TIME</th>
+            <th style="width:13%">STEP EXECUTION</th>
+            <th style="width:11%">HANDOFF TRIGGER</th>
+            <th style="width:4%"></th>
+          </tr>
         </thead>
         <tbody id="stepsBody">
           <tr>
-  <td><input type="text" placeholder="e.g. Legal sends NDA and compliance docs to client"></td>
-  <td><input type="text" placeholder="e.g. Legal team"></td>
-  <td>
-    <select>
-      <option>Direct Internal</option>
-      <option>Cross-functional Internal</option>
-      <option>External Vendor</option>
-      <option>Shared</option>
-    </select>
-  </td>
-  <td><input type="text" placeholder="e.g. 48 hrs"></td>
-  <td><input type="text" placeholder="e.g. 2 hrs"></td>
-  <td>
-    <select>
-      <option>Manual</option>
-      <option>Partially Automated</option>
-      <option>Fully Automated</option>
-    </select>
-  </td>
-  <td>
-    <select>
-      <option>Manual</option>
-      <option>Automated</option>
-    </select>
-  </td>
-  <td class="del-col"><button class="del-btn" onclick="deleteRow(this)">×</button></td>
-</tr>
+            <td><input type="text" placeholder="e.g. Legal sends NDA and compliance docs to client"></td>
+            <td><input type="text" placeholder="e.g. Legal team"></td>
+            <td>
+              <select>
+                <option>Direct Internal</option>
+                <option>Cross-functional Internal</option>
+                <option>External Vendor</option>
+                <option>Shared</option>
+              </select>
+            </td>
+            <td><input type="text" placeholder="e.g. 48 hrs"></td>
+            <td><input type="text" placeholder="e.g. 2 hrs"></td>
+            <td>
+              <select>
+                <option>Manual</option>
+                <option>Partially Automated</option>
+                <option>Fully Automated</option>
+              </select>
+            </td>
+            <td>
+              <select>
+                <option>Manual</option>
+                <option>Automated</option>
+              </select>
+            </td>
+            <td class="del-col"><button class="del-btn" onclick="deleteRow(this)">×</button></td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -1013,7 +1013,7 @@
         LAYER 01 — EXECUTIVE
       </div>
       <div class="panel-header-right">
-        <span class="output-tag">~150 WORDS</span>
+        <span class="output-tag">REALITY CHECK</span>
         <button class="copy-btn" id="copyBtn1" onclick="copyPanel('outputText1','copyBtn1','copy_layer1')">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect x="4" y="4" width="9" height="9" rx="0" stroke="currentColor" stroke-width="1.2"/>
@@ -1061,20 +1061,6 @@
 </footer>
 
 <script>
-  // ════════════════════════════════════════════════════════════════
-  // PIS / MODULE 02 — Ownership Mapper
-  // Handover file for Claude Code
-  // ────────────────────────────────────────────────────────────────
-  // HOW TO WIRE UP:
-  // 1. API CALL — search "// API CALL GOES HERE" to find the exact
-  //    insertion point inside runDiagnosis(). Replace the stub with
-  //    a real fetch() to the Anthropic Messages API.
-  // 2. SUPABASE EVENTS — search "// SUPABASE EVENT:" to find all
-  //    three trigger points: run_diagnosis, copy_layer1, copy_layer2.
-  //    Replace logEvent() body with your Supabase client insert.
-  // 3. ENV VARS needed: ANTHROPIC_API_KEY, SUPABASE_URL, SUPABASE_ANON_KEY
-  // ════════════════════════════════════════════════════════════════
-
   // ── Row management ──────────────────────────────────────
   function deleteRow(btn) {
     const row = btn.closest('tr');
@@ -1085,96 +1071,65 @@
   function addRow() {
     const tbody = document.getElementById('stepsBody');
     const tr = document.createElement('tr');
-    tr.innerHTML = `
-      <td><input type="text" placeholder="e.g. Legal sends NDA and compliance docs to client"></td>
-      <td><input type="text" placeholder="e.g. Legal team"></td>
-      <td>
-        <select>
-          <option>Direct Internal</option>
-          <option>Cross-functional Internal</option>
-          <option>External Vendor</option>
-          <option>Shared</option>
-        </select>
-      </td>
-      <td><input type="text" placeholder="e.g. 48 hrs"></td>
-      <td><input type="text" placeholder="e.g. 2 hrs"></td>
-      <td>
-        <select>
-          <option>Manual</option>
-          <option>Partially Automated</option>
-          <option>Fully Automated</option>
-        </select>
-      </td>
-      <td>
-        <select>
-          <option>Manual</option>
-          <option>Automated</option>
-        </select>
-      </td>
-      <td class="del-col"><button class="del-btn" onclick="deleteRow(this)">×</button></td>
-    `;
+    tr.innerHTML =
+      '<td><input type="text" placeholder="e.g. Legal sends NDA and compliance docs to client"></td>' +
+      '<td><input type="text" placeholder="e.g. Legal team"></td>' +
+      '<td><select><option>Direct Internal</option><option>Cross-functional Internal</option><option>External Vendor</option><option>Shared</option></select></td>' +
+      '<td><input type="text" placeholder="e.g. 48 hrs"></td>' +
+      '<td><input type="text" placeholder="e.g. 2 hrs"></td>' +
+      '<td><select><option>Manual</option><option>Partially Automated</option><option>Fully Automated</option></select></td>' +
+      '<td><select><option>Manual</option><option>Automated</option></select></td>' +
+      '<td class="del-col"><button class="del-btn" onclick="deleteRow(this)">×</button></td>';
     tbody.appendChild(tr);
     tr.querySelector('input').focus();
   }
 
   // ── Collect form data ────────────────────────────────────
   function collectSteps() {
-  const rows = document.querySelectorAll('#stepsBody tr');
-  return Array.from(rows).map((row, i) => {
-    const inputs = row.querySelectorAll('input');
-    const selects = row.querySelectorAll('select');
-    return {
-      index: i + 1,
-      description: inputs[0].value.trim(),
-      who: inputs[1].value.trim(),
-      ownership: selects[0].value,
-      slaTat: inputs[2].value.trim(),
-      actualTime: inputs[3].value.trim(),
-      stepExecution: selects[1].value,
-      handoffTrigger: selects[2].value,
-    };
-  }).filter(r => r.description);
-}
+    const rows = document.querySelectorAll('#stepsBody tr');
+    return Array.from(rows).map(function(row, i) {
+      const inputs = row.querySelectorAll('input');
+      const selects = row.querySelectorAll('select');
+      return {
+        index: i + 1,
+        description: inputs[0].value.trim(),
+        who: inputs[1].value.trim(),
+        ownership: selects[0].value,
+        slaTat: inputs[2].value.trim(),
+        actualTime: inputs[3].value.trim(),
+        stepExecution: selects[1].value,
+        handoffTrigger: selects[2].value,
+      };
+    }).filter(function(r) { return r.description; });
+  }
 
   // ── Supabase event logging ──────────────────────────────────
-  // Replace this function body with your Supabase insert call.
-  // Table suggestion: pis_events (id, event_type, created_at, user_id, metadata)
-  // Example:
-  //   await supabase.from('pis_events').insert({ event_type: eventType, created_at: new Date() });
   async function logEvent(eventType) {
     fetch('/api/log-event', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ eventType }),
-    }).catch(() => {});
+      body: JSON.stringify({ eventType: eventType }),
+    }).catch(function() {});
   }
 
   // ── Copy panel ───────────────────────────────────────────
   function copyPanel(textId, btnId, eventType) {
-        const text = document.getElementById(textId).innerText + '\n\nBuilt by Vikrant Sharma — https://www.linkedin.com/in/vikrantsharma10/';
-    navigator.clipboard.writeText(text).then(() => {
+    const text = document.getElementById(textId).innerText + '\n\nBuilt by Vikrant Sharma — https://www.linkedin.com/in/vikrantsharma10/';
+    navigator.clipboard.writeText(text).then(function() {
       const btn = document.getElementById(btnId);
       btn.classList.add('copied');
-      btn.innerHTML = `
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7l4 4 6-6" stroke="#c8f135" stroke-width="1.5" stroke-linecap="square"/></svg>
-        COPIED
-      `;
-      // SUPABASE EVENT: copy_layer1 or copy_layer2 (value of eventType param)
+      btn.innerHTML =
+        '<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7l4 4 6-6" stroke="#c8f135" stroke-width="1.5" stroke-linecap="square"/></svg> COPIED';
       logEvent(eventType);
-      setTimeout(() => {
+      setTimeout(function() {
         btn.classList.remove('copied');
-        btn.innerHTML = `
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="4" y="4" width="9" height="9" rx="0" stroke="currentColor" stroke-width="1.2"/>
-            <path d="M2 10V2h8" stroke="currentColor" stroke-width="1.2"/>
-          </svg>
-          COPY
-        `;
+        btn.innerHTML =
+          '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="4" width="9" height="9" rx="0" stroke="currentColor" stroke-width="1.2"/><path d="M2 10V2h8" stroke="currentColor" stroke-width="1.2"/></svg> COPY';
       }, 2000);
     });
   }
 
-   // ── Output rendering ─────────────────────────────────────
+  // ── Output rendering ─────────────────────────────────────
   function escapeHtml(str) {
     return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   }
@@ -1184,18 +1139,18 @@
   }
 
   function isSeparatorRow(line) {
-    return parseTableRow(line).every(cell => /^[\s\-:]+$/.test(cell));
+    return parseTableRow(line).every(function(cell) { return /^[\s\-:]+$/.test(cell); });
   }
 
   function buildHtmlTable(lines) {
     const headerCells = parseTableRow(lines[0]);
-    const dataLines = lines.slice(1).filter(l => !isSeparatorRow(l));
+    const dataLines = lines.slice(1).filter(function(l) { return !isSeparatorRow(l); });
     let t = '<table class="output-table"><thead><tr>';
-    headerCells.forEach(c => { t += `<th>${escapeHtml(c.trim())}</th>`; });
+    headerCells.forEach(function(c) { t += '<th>' + escapeHtml(c.trim()) + '</th>'; });
     t += '</tr></thead><tbody>';
-    dataLines.forEach(row => {
+    dataLines.forEach(function(row) {
       t += '<tr>';
-      parseTableRow(row).forEach(c => { t += `<td>${escapeHtml(c.trim())}</td>`; });
+      parseTableRow(row).forEach(function(c) { t += '<td>' + escapeHtml(c.trim()) + '</td>'; });
       t += '</tr>';
     });
     return t + '</tbody></table>';
@@ -1224,15 +1179,15 @@
 
   // ── Parse AI output ──────────────────────────────────────
   function parseOutput(text, role) {
-  const isExecutiveFirst = role === 'VP or Director';
-  const l1Match = text.match(/LAYER\s*0?1[:\s\-—]*([\s\S]*?)(?=LAYER\s*0?2|$)/i);
-  const l2Match = text.match(/LAYER\s*0?2[:\s\-—]*([\s\S]*?)(?=LAYER\s*0?1|$)/i);
-  return {
-    layer1: l1Match ? l1Match[1].trim() : text,
-    layer2: l2Match ? l2Match[1].trim() : '',
-    executiveFirst: isExecutiveFirst
-  };
-}
+    const isExecutiveFirst = role === 'VP or Director';
+    const l1Match = text.match(/LAYER\s*0?1[:\s\-\u2014]*([\s\S]*?)(?=LAYER\s*0?2|$)/i);
+    const l2Match = text.match(/LAYER\s*0?2[:\s\-\u2014]*([\s\S]*?)(?=LAYER\s*0?1|$)/i);
+    return {
+      layer1: l1Match ? l1Match[1].trim() : text,
+      layer2: l2Match ? l2Match[1].trim() : '',
+      executiveFirst: isExecutiveFirst
+    };
+  }
 
   // ── Main diagnosis ───────────────────────────────────────
   async function runDiagnosis() {
@@ -1249,7 +1204,6 @@
     const breakPoints = document.getElementById('breakPoints').value.trim();
     const targetSla = document.getElementById('targetSla').value.trim();
 
-    // UI state
     const btn = document.getElementById('runBtn');
     const loader = document.getElementById('loadingIndicator');
     const errMsg = document.getElementById('errorMsg');
@@ -1261,66 +1215,52 @@
     errMsg.classList.remove('visible');
     outputSection.classList.remove('visible');
 
-    // Scroll to loader
     loader.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 
-    // Build prompt
-    const stepsText = steps.map(s =>
-  `Step ${s.index}: ${s.description} | Who: ${s.who} | Ownership: ${s.ownership} | SLA/TAT: ${s.slaTat} | Actual Execution Time: ${s.actualTime} | Step Execution: ${s.stepExecution} | Handoff Trigger: ${s.handoffTrigger}`
-).join('\n');
+    const stepsText = steps.map(function(s) {
+      return 'Step ' + s.index + ': ' + s.description +
+        ' | Who: ' + s.who +
+        ' | Ownership: ' + s.ownership +
+        ' | SLA/TAT: ' + s.slaTat +
+        ' | Actual Execution Time: ' + s.actualTime +
+        ' | Step Execution: ' + s.stepExecution +
+        ' | Handoff Trigger: ' + s.handoffTrigger;
+    }).join('\n');
 
-    const userPrompt = `
-Process Name: ${processName}
-Current SLA: ${currentSla}
-Target SLA: ${targetSla || 'Not specified'}
-User Role: ${userRole}
-Step Execution Mode: ${parallelMode}
-Common Breakdown Points: ${breakPoints || 'None provided'}
-
-PROCESS STEPS:
-${stepsText}
-`.trim();
-
----
-
-Please produce a structured ownership diagnosis in two clearly labelled sections:
-
-LAYER 01 — EXECUTIVE (~150 words):
-A crisp, board-ready executive summary covering: current SLA vs achievable SLA, the critical path owner (single step setting the ceiling), top two fixes with effort rating (High/Medium/Low), and a one-line direction for internal vs external teams.
-
-LAYER 02 — TEAM DIAGNOSIS:
-A detailed structured breakdown including:
-1. OWNERSHIP MAP — every step tagged as Direct Internal / Cross-functional Internal / External Vendor / Shared
-2. DELAY OWNERSHIP — for each step: Yours to Fix / Yours to Influence / Yours to Negotiate
-3. HIDDEN QUEUE GAP — queue time flagged per external step (time waiting vs time doing)
-4. FIXES SEQUENCED BY CRITICAL PATH IMPACT — each fix with effort rating (High/Medium/Low) and dependency flag
-5. STACKED IMPACT TABLE — conservative SLA reduction estimate per fix (in hours or days), cumulative total
-
-Use clear headers, concise language, and mono-style formatting (no markdown bold or italics needed). Write for an ops professional who will act on this immediately.
-`.trim();
+    const userPrompt = [
+      'Process Name: ' + processName,
+      'Current SLA: ' + currentSla,
+      'Target SLA: ' + (targetSla || 'Not specified'),
+      'User Role: ' + userRole,
+      'Step Execution Mode: ' + parallelMode,
+      'Common Breakdown Points: ' + (breakPoints || 'None provided'),
+      '',
+      'PROCESS STEPS:',
+      stepsText
+    ].join('\n');
 
     try {
       const apiRes = await fetch('/api/diagnose', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ userPrompt }),
+        body: JSON.stringify({ userPrompt: userPrompt }),
       });
       if (!apiRes.ok) {
-        const errData = await apiRes.json().catch(() => ({}));
-        throw new Error(errData.error || `Request failed (${apiRes.status})`);
+        const errData = await apiRes.json().catch(function() { return {}; });
+        throw new Error(errData.error || 'Request failed (' + apiRes.status + ')');
       }
       const data = await apiRes.json();
       const response = data.text;
 
       const parsed = parseOutput(response, userRole);
 
-if (parsed.executiveFirst) {
-  document.getElementById('outputText1').innerHTML = renderOutput(parsed.layer1);
-  document.getElementById('outputText2').innerHTML = renderOutput(parsed.layer2 || response);
-} else {
-  document.getElementById('outputText1').innerHTML = renderOutput(parsed.layer2 || response);
-  document.getElementById('outputText2').innerHTML = renderOutput(parsed.layer1);
-}
+      if (parsed.executiveFirst) {
+        document.getElementById('outputText1').innerHTML = renderOutput(parsed.layer1);
+        document.getElementById('outputText2').innerHTML = renderOutput(parsed.layer2 || response);
+      } else {
+        document.getElementById('outputText1').innerHTML = renderOutput(parsed.layer2 || response);
+        document.getElementById('outputText2').innerHTML = renderOutput(parsed.layer1);
+      }
 
       outputSection.classList.add('visible');
       outputSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
