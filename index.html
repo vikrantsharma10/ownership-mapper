@@ -986,7 +986,7 @@
 
     <div class="loading-indicator" id="loadingIndicator">
       <div class="spinner"></div>
-      <span>Splitting ownership and mapping your critical path...</span>
+      <span>Mapping your process and calculating where the time actually goes...</span>
     </div>
 
     <div class="error-msg" id="errorMsg"></div>
@@ -1207,15 +1207,16 @@
   }
 
   // ── Parse AI output ──────────────────────────────────────
-  function parseOutput(text) {
-    // Split on Layer 01 / Layer 02 markers
-    const l1Match = text.match(/LAYER\s*0?1[:\s\-—]*([\s\S]*?)(?=LAYER\s*0?2|$)/i);
-    const l2Match = text.match(/LAYER\s*0?2[:\s\-—]*([\s\S]*?)$/i);
-    return {
-      layer1: l1Match ? l1Match[1].trim() : text,
-      layer2: l2Match ? l2Match[1].trim() : '',
-    };
-  }
+  function parseOutput(text, role) {
+  const isExecutiveFirst = role === 'VP or Director';
+  const l1Match = text.match(/LAYER\s*0?1[:\s\-—]*([\s\S]*?)(?=LAYER\s*0?2|$)/i);
+  const l2Match = text.match(/LAYER\s*0?2[:\s\-—]*([\s\S]*?)(?=LAYER\s*0?1|$)/i);
+  return {
+    layer1: l1Match ? l1Match[1].trim() : text,
+    layer2: l2Match ? l2Match[1].trim() : '',
+    executiveFirst: isExecutiveFirst
+  };
+}
 
   // ── Main diagnosis ───────────────────────────────────────
   async function runDiagnosis() {
@@ -1262,6 +1263,7 @@ Common Breakdown Points: ${breakPoints || 'None provided'}
 
 PROCESS STEPS:
 ${stepsText}
+`.trim();
 
 ---
 
