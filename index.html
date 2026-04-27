@@ -1103,20 +1103,22 @@
 
   // ── Collect form data ────────────────────────────────────
   function collectSteps() {
-    const rows = document.querySelectorAll('#stepsBody tr');
-    return Array.from(rows).map((row, i) => {
-      const inputs = row.querySelectorAll('input');
-      const selects = row.querySelectorAll('select');
-      return {
-        index: i + 1,
-        description: inputs[0].value.trim(),
-        who: inputs[1].value.trim(),
-        ownership: selects[0].value,
-        time: inputs[2].value.trim(),
-        automated: selects[1].value,
-      };
-    }).filter(r => r.description);
-  }
+  const rows = document.querySelectorAll('#stepsBody tr');
+  return Array.from(rows).map((row, i) => {
+    const inputs = row.querySelectorAll('input');
+    const selects = row.querySelectorAll('select');
+    return {
+      index: i + 1,
+      description: inputs[0].value.trim(),
+      who: inputs[1].value.trim(),
+      ownership: selects[0].value,
+      slaTat: inputs[2].value.trim(),
+      actualTime: inputs[3].value.trim(),
+      stepExecution: selects[1].value,
+      handoffTrigger: selects[2].value,
+    };
+  }).filter(r => r.description);
+}
 
   // ── Supabase event logging ──────────────────────────────────
   // Replace this function body with your Supabase insert call.
@@ -1247,8 +1249,8 @@
 
     // Build prompt
     const stepsText = steps.map(s =>
-      `Step ${s.index}: ${s.description} | Who: ${s.who} | Ownership: ${s.ownership} | Time: ${s.time} | Automation: ${s.automated}`
-    ).join('\n');
+  `Step ${s.index}: ${s.description} | Who: ${s.who} | Ownership: ${s.ownership} | SLA/TAT: ${s.slaTat} | Actual Execution Time: ${s.actualTime} | Step Execution: ${s.stepExecution} | Handoff Trigger: ${s.handoffTrigger}`
+).join('\n');
 
     const userPrompt = `
 Process Name: ${processName}
