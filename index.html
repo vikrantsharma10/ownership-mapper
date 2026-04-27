@@ -942,26 +942,33 @@
         </thead>
         <tbody id="stepsBody">
           <tr>
-            <td><input type="text" placeholder="e.g. Legal sends NDA and compliance docs to client"></td>
-            <td><input type="text" placeholder="e.g. Legal team"></td>
-            <td>
-              <select>
-                <option>Direct Internal</option>
-                <option>Cross-functional Internal</option>
-                <option>External Vendor</option>
-                <option>Shared</option>
-              </select>
-            </td>
-            <td><input type="text" placeholder="e.g. 48 hours"></td>
-            <td>
-              <select>
-                <option>Manual</option>
-                <option>Automated</option>
-                <option>Partially automated</option>
-              </select>
-            </td>
-            <td class="del-col"><button class="del-btn" onclick="deleteRow(this)">×</button></td>
-          </tr>
+  <td><input type="text" placeholder="e.g. Legal sends NDA and compliance docs to client"></td>
+  <td><input type="text" placeholder="e.g. Legal team"></td>
+  <td>
+    <select>
+      <option>Direct Internal</option>
+      <option>Cross-functional Internal</option>
+      <option>External Vendor</option>
+      <option>Shared</option>
+    </select>
+  </td>
+  <td><input type="text" placeholder="e.g. 48 hrs"></td>
+  <td><input type="text" placeholder="e.g. 2 hrs"></td>
+  <td>
+    <select>
+      <option>Manual</option>
+      <option>Partially Automated</option>
+      <option>Fully Automated</option>
+    </select>
+  </td>
+  <td>
+    <select>
+      <option>Manual</option>
+      <option>Automated</option>
+    </select>
+  </td>
+  <td class="del-col"><button class="del-btn" onclick="deleteRow(this)">×</button></td>
+</tr>
         </tbody>
       </table>
     </div>
@@ -1086,18 +1093,24 @@
           <option>Shared</option>
         </select>
       </td>
-      <td><input type="text" placeholder="e.g. 48 hours"></td>
+      <td><input type="text" placeholder="e.g. 48 hrs"></td>
+      <td><input type="text" placeholder="e.g. 2 hrs"></td>
+      <td>
+        <select>
+          <option>Manual</option>
+          <option>Partially Automated</option>
+          <option>Fully Automated</option>
+        </select>
+      </td>
       <td>
         <select>
           <option>Manual</option>
           <option>Automated</option>
-          <option>Partially automated</option>
         </select>
       </td>
       <td class="del-col"><button class="del-btn" onclick="deleteRow(this)">×</button></td>
     `;
     tbody.appendChild(tr);
-    // focus new row
     tr.querySelector('input').focus();
   }
 
@@ -1296,10 +1309,15 @@ Use clear headers, concise language, and mono-style formatting (no markdown bold
       const data = await apiRes.json();
       const response = data.text;
 
-      const parsed = parseOutput(response);
+      const parsed = parseOutput(response, userRole);
 
-      document.getElementById('outputText1').innerHTML = renderOutput(parsed.layer1);
-      document.getElementById('outputText2').innerHTML = renderOutput(parsed.layer2 || response);
+if (parsed.executiveFirst) {
+  document.getElementById('outputText1').innerHTML = renderOutput(parsed.layer1);
+  document.getElementById('outputText2').innerHTML = renderOutput(parsed.layer2 || response);
+} else {
+  document.getElementById('outputText1').innerHTML = renderOutput(parsed.layer2 || response);
+  document.getElementById('outputText2').innerHTML = renderOutput(parsed.layer1);
+}
 
       outputSection.classList.add('visible');
       outputSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
