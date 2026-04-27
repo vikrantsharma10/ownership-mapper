@@ -37,7 +37,6 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* ── NAV ─────────────────────────────────────────────── */
   nav {
     position: sticky;
     top: 0;
@@ -78,12 +77,8 @@
     transition: background 0.15s, color 0.15s;
   }
 
-  .nav-right a:hover {
-    background: var(--lime);
-    color: var(--lime-dark);
-  }
+  .nav-right a:hover { background: var(--lime); color: var(--lime-dark); }
 
-  /* ── SHARED ──────────────────────────────────────────── */
   .container { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
 
   .section-label {
@@ -96,21 +91,11 @@
     margin-bottom: 32px;
   }
 
-  h1, h2 {
-    font-family: var(--serif);
-    font-weight: 400;
-    color: var(--fg);
-    line-height: 1.15;
-  }
-
+  h1, h2 { font-family: var(--serif); font-weight: 400; color: var(--fg); line-height: 1.15; }
   h1 { font-size: clamp(48px, 6vw, 80px); }
   h2 { font-size: clamp(32px, 4vw, 52px); }
 
-  /* ── HERO ─────────────────────────────────────────────── */
-  .hero {
-    padding: 96px 0 80px;
-    border-bottom: 1px solid var(--border);
-  }
+  .hero { padding: 96px 0 80px; border-bottom: 1px solid var(--border); }
 
   .hero-eyebrow {
     font-family: var(--mono);
@@ -133,12 +118,7 @@
     margin-bottom: 40px;
   }
 
-  .stat-pills {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-    margin-bottom: 44px;
-  }
+  .stat-pills { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 44px; }
 
   .stat-pill {
     font-family: var(--mono);
@@ -206,17 +186,9 @@
     transition: background 0.15s, color 0.15s;
   }
 
-  .btn-outline:hover {
-    background: var(--lime);
-    color: var(--lime-dark);
-  }
+  .btn-outline:hover { background: var(--lime); color: var(--lime-dark); }
 
-  /* ── HOW IT WORKS ────────────────────────────────────── */
-  .how {
-    padding: 96px 0;
-    border-bottom: 1px solid var(--border);
-  }
-
+  .how { padding: 96px 0; border-bottom: 1px solid var(--border); }
   .how h2 { margin-bottom: 64px; }
 
   .steps {
@@ -226,17 +198,8 @@
     align-items: start;
   }
 
-  .step-arrow {
-    font-family: var(--mono);
-    font-size: 18px;
-    color: var(--fg-muted);
-    text-align: center;
-    padding-top: 4px;
-  }
-
-  .step {
-    padding: 0;
-  }
+  .step-arrow { font-family: var(--mono); font-size: 18px; color: var(--fg-muted); text-align: center; padding-top: 4px; }
+  .step { padding: 0; }
 
   .step-num {
     font-family: var(--mono);
@@ -258,32 +221,13 @@
     margin-bottom: 16px;
   }
 
-  .step p {
-    font-family: var(--sans);
-    font-size: 14px;
-    line-height: 1.75;
-    color: var(--fg-muted);
-  }
+  .step p { font-family: var(--sans); font-size: 14px; line-height: 1.75; color: var(--fg-muted); }
 
-  /* ── WHAT YOU GET ────────────────────────────────────── */
-  .wyg {
-    padding: 96px 0;
-    border-bottom: 1px solid var(--border);
-  }
-
+  .wyg { padding: 96px 0; border-bottom: 1px solid var(--border); }
   .wyg h2 { margin-bottom: 56px; }
+  .wyg-panels { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
 
-  .wyg-panels {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-  }
-
-  .wyg-panel {
-    background: var(--bg-panel);
-    border: 1px solid var(--border-mid);
-    padding: 40px;
-  }
+  .wyg-panel { background: var(--bg-panel); border: 1px solid var(--border-mid); padding: 40px; }
 
   .panel-layer {
     font-family: var(--mono);
@@ -309,30 +253,9 @@
     padding: 3px 8px;
   }
 
-  .wyg-panel h3 {
-    font-family: var(--serif);
-    font-size: 28px;
-    font-weight: 400;
-    color: var(--fg);
-    margin-bottom: 16px;
-    line-height: 1.2;
-  }
-
-  .wyg-panel > p {
-    font-family: var(--sans);
-    font-size: 14px;
-    line-height: 1.75;
-    color: var(--fg-muted);
-    margin-bottom: 24px;
-  }
-
-  .wyg-panel ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
+  .wyg-panel h3 { font-family: var(--serif); font-size: 28px; font-weight: 400; color: var(--fg); margin-bottom: 16px; line-height: 1.2; }
+  .wyg-panel > p { font-family: var(--sans); font-size: 14px; line-height: 1.75; color: var(--fg-muted); margin-bottom: 24px; }
+  .wyg-panel ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px; }
 
   .wyg-panel ul li {
     font-family: var(--sans);
@@ -343,44 +266,15 @@
     line-height: 1.5;
   }
 
-  .wyg-panel ul li::before {
-    content: '—';
-    position: absolute;
-    left: 0;
-    color: var(--lime);
-    font-family: var(--mono);
-  }
+  .wyg-panel ul li::before { content: '—'; position: absolute; left: 0; color: var(--lime); font-family: var(--mono); }
 
-  /* ── TOOL ────────────────────────────────────────────── */
-  .tool {
-    padding: 96px 0;
-    border-bottom: 1px solid var(--border);
-  }
-
+  .tool { padding: 96px 0; border-bottom: 1px solid var(--border); }
   .tool h2 { margin-bottom: 16px; }
 
-  .tool-subtext {
-    font-family: var(--sans);
-    font-size: 15px;
-    color: var(--fg-muted);
-    max-width: 640px;
-    margin-bottom: 56px;
-    line-height: 1.75;
-  }
+  .tool-subtext { font-family: var(--sans); font-size: 15px; color: var(--fg-muted); max-width: 640px; margin-bottom: 56px; line-height: 1.75; }
 
-  /* Form layout */
-  .form-row-2 {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin-bottom: 16px;
-  }
-
-  .field-group {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
+  .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .field-group { display: flex; flex-direction: column; gap: 8px; }
 
   .field-label {
     font-family: var(--mono);
@@ -391,9 +285,7 @@
     color: var(--fg-muted);
   }
 
-  input[type="text"],
-  textarea,
-  select {
+  input[type="text"], textarea, select {
     background: var(--bg-panel);
     border: 1px solid var(--border-mid);
     color: var(--fg);
@@ -407,17 +299,8 @@
     -webkit-appearance: none;
   }
 
-  input[type="text"]:focus,
-  textarea:focus,
-  select[class]:focus {
-    border-color: var(--lime);
-  }
-
-  input::placeholder, textarea::placeholder {
-    color: var(--fg-muted);
-    font-family: var(--mono);
-    font-size: 12px;
-  }
+  input[type="text"]:focus, textarea:focus, select[class]:focus { border-color: var(--lime); }
+  input::placeholder, textarea::placeholder { color: var(--fg-muted); font-family: var(--mono); font-size: 12px; }
 
   select {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236a6a6a' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
@@ -429,23 +312,9 @@
 
   select option { background: #1a1a1a; color: var(--fg); }
 
-  /* Steps table */
-  .steps-table-wrap {
-    margin: 32px 0 16px;
-    border: 1px solid var(--border-mid);
-    overflow-x: auto;
-  }
-
-  .steps-table {
-    width: 100%;
-    border-collapse: collapse;
-    min-width: 900px;
-  }
-
-  .steps-table thead tr {
-    border-bottom: 1px solid var(--border-mid);
-    background: var(--bg-panel2);
-  }
+  .steps-table-wrap { margin: 32px 0 16px; border: 1px solid var(--border-mid); overflow-x: auto; }
+  .steps-table { width: 100%; border-collapse: collapse; min-width: 900px; }
+  .steps-table thead tr { border-bottom: 1px solid var(--border-mid); background: var(--bg-panel2); }
 
   .steps-table th {
     font-family: var(--mono);
@@ -461,17 +330,7 @@
 
   .steps-table td { padding: 4px 4px; border-bottom: 1px solid var(--border); }
   .steps-table tr:last-child td { border-bottom: none; }
-
-  .steps-table td input,
-  .steps-table td select {
-    background: transparent;
-    border: none;
-    border-radius: 0;
-    font-size: 12px;
-    padding: 10px 10px;
-    width: 100%;
-    color: var(--fg);
-  }
+  .steps-table td input, .steps-table td select { background: transparent; border: none; border-radius: 0; font-size: 12px; padding: 10px 10px; width: 100%; color: var(--fg); }
 
   .steps-table td select {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236a6a6a' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
@@ -486,83 +345,21 @@
     background-position: right 10px center;
   }
 
-  .steps-table td input:focus,
-  .steps-table td select:focus {
-    background: var(--bg-panel2);
-    outline: 1px solid var(--lime);
-    border-color: transparent;
-  }
+  .steps-table td input:focus, .steps-table td select:focus { background: var(--bg-panel2); outline: 1px solid var(--lime); border-color: transparent; }
+  .steps-table td.del-col { width: 32px; text-align: center; padding: 0; }
 
-  .steps-table td.del-col {
-    width: 32px;
-    text-align: center;
-    padding: 0;
-  }
-
-  .del-btn {
-    background: none;
-    border: none;
-    color: var(--fg-muted);
-    cursor: pointer;
-    font-size: 16px;
-    padding: 4px 8px;
-    font-family: var(--mono);
-    transition: color 0.15s;
-  }
-
+  .del-btn { background: none; border: none; color: var(--fg-muted); cursor: pointer; font-size: 16px; padding: 4px 8px; font-family: var(--mono); transition: color 0.15s; }
   .del-btn:hover { color: #e74c3c; }
+  .add-step-btn { margin-top: 0; }
+  .optional-fields { margin-top: 32px; display: flex; flex-direction: column; gap: 16px; }
+  textarea { resize: vertical; min-height: 88px; line-height: 1.6; }
+  .disclaimer { font-family: var(--mono); font-size: 11px; color: var(--fg-muted); margin-top: 20px; line-height: 1.7; }
+  .tip-line { font-family: var(--mono); font-size: 11px; color: var(--fg-muted); margin-top: 10px; line-height: 1.7; }
+  .tip-line strong { color: var(--fg-mid); font-weight: 700; }
 
-  .add-step-btn {
-    margin-top: 0;
-  }
-
-  .optional-fields {
-    margin-top: 32px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  textarea {
-    resize: vertical;
-    min-height: 88px;
-    line-height: 1.6;
-  }
-
-  .disclaimer {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--fg-muted);
-    margin-top: 20px;
-    line-height: 1.7;
-  }
-
-  .tip-line {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--fg-muted);
-    margin-top: 10px;
-    line-height: 1.7;
-  }
-
-  .tip-line strong {
-    color: var(--fg-mid);
-    font-weight: 700;
-  }
-
-  /* ── OUTPUT PANELS ───────────────────────────────────── */
-  .output-section {
-    padding: 0 0 96px;
-    display: none;
-  }
-
+  .output-section { padding: 0 0 96px; display: none; }
   .output-section.visible { display: block; }
-
-  .output-panel {
-    background: var(--bg-panel);
-    border: 1px solid var(--border-mid);
-    margin-bottom: 24px;
-  }
+  .output-panel { background: var(--bg-panel); border: 1px solid var(--border-mid); margin-bottom: 24px; }
 
   .output-panel-header {
     display: flex;
@@ -573,7 +370,9 @@
     background: var(--bg-panel2);
   }
 
-  .panel-header-left {
+  .panel-header-left { display: flex; flex-direction: column; gap: 4px; }
+
+  .panel-header-title {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -585,17 +384,9 @@
     color: var(--fg);
   }
 
-  .panel-sq {
-    color: var(--lime);
-    font-size: 14px;
-    line-height: 1;
-  }
-
-  .panel-header-right {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
+  .panel-header-desc { font-family: var(--mono); font-size: 10px; color: var(--fg-muted); letter-spacing: 0.05em; }
+  .panel-sq { color: var(--lime); font-size: 14px; line-height: 1; }
+  .panel-header-right { display: flex; align-items: center; gap: 12px; }
 
   .output-tag {
     font-family: var(--mono);
@@ -627,103 +418,28 @@
 
   .copy-btn:hover { color: var(--fg); }
   .copy-btn.copied { color: var(--lime); }
-
   .copy-btn svg { transition: opacity 0.15s; }
 
-  .output-body {
-    padding: 32px 28px;
-    font-family: var(--mono);
-    font-size: 13px;
-    line-height: 1.8;
-    color: var(--fg);
-    white-space: pre-wrap;
-    word-break: break-word;
-  }
+  .output-body { padding: 32px 28px; font-family: var(--mono); font-size: 13px; line-height: 1.8; color: var(--fg); white-space: pre-wrap; word-break: break-word; }
 
-  .output-attribution {
-    padding: 16px 28px;
-    border-top: 1px solid var(--border);
-    font-family: var(--mono);
-    font-size: 10px;
-    color: var(--fg-muted);
-    letter-spacing: 0.05em;
-  }
-
-  .output-attribution a {
-    color: var(--lime);
-    text-decoration: none;
-  }
-
+  .output-attribution { padding: 16px 28px; border-top: 1px solid var(--border); font-family: var(--mono); font-size: 10px; color: var(--fg-muted); letter-spacing: 0.05em; }
+  .output-attribution a { color: var(--lime); text-decoration: none; }
   .output-attribution a:hover { text-decoration: underline; }
 
-  /* Loading */
-  .loading-indicator {
-    display: none;
-    align-items: center;
-    gap: 12px;
-    padding: 24px 0;
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--fg-muted);
-    letter-spacing: 0.08em;
-  }
-
+  .loading-indicator { display: none; align-items: center; gap: 12px; padding: 24px 0; font-family: var(--mono); font-size: 12px; color: var(--fg-muted); letter-spacing: 0.08em; }
   .loading-indicator.visible { display: flex; }
 
-  .spinner {
-    width: 16px;
-    height: 16px;
-    border: 2px solid var(--border-mid);
-    border-top-color: var(--lime);
-    animation: spin 0.7s linear infinite;
-  }
-
+  .spinner { width: 16px; height: 16px; border: 2px solid var(--border-mid); border-top-color: var(--lime); animation: spin 0.7s linear infinite; }
   @keyframes spin { to { transform: rotate(360deg); } }
 
-  .error-msg {
-    display: none;
-    font-family: var(--mono);
-    font-size: 12px;
-    color: #e74c3c;
-    padding: 16px;
-    border: 1px solid #3d1a1a;
-    background: #1a0a0a;
-    margin-top: 16px;
-    letter-spacing: 0.05em;
-  }
-
+  .error-msg { display: none; font-family: var(--mono); font-size: 12px; color: #e74c3c; padding: 16px; border: 1px solid #3d1a1a; background: #1a0a0a; margin-top: 16px; letter-spacing: 0.05em; }
   .error-msg.visible { display: block; }
 
-  /* ── FOOTER ──────────────────────────────────────────── */
-  footer {
-    border-top: 1px solid var(--border);
-    padding: 20px 48px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .footer-left {
-    font-family: var(--mono);
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--fg-muted);
-  }
-
-  .footer-right a {
-    font-family: var(--mono);
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--lime);
-    text-decoration: none;
-    letter-spacing: 0.06em;
-  }
-
+  footer { border-top: 1px solid var(--border); padding: 20px 48px; display: flex; align-items: center; justify-content: space-between; }
+  .footer-left { font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-muted); }
+  .footer-right a { font-family: var(--mono); font-size: 11px; font-weight: 600; color: var(--lime); text-decoration: none; letter-spacing: 0.06em; }
   .footer-right a:hover { text-decoration: underline; }
 
-  /* ── RESPONSIVE ──────────────────────────────────────── */
   @media (max-width: 900px) {
     nav, footer { padding: 14px 24px; }
     .container { padding: 0 24px; }
@@ -733,66 +449,22 @@
     .form-row-2 { grid-template-columns: 1fr; }
   }
 
-  /* Hero accent */
-  .hero-accent {
-    color: var(--lime);
-    font-style: italic;
-  }
+  .hero-accent { color: var(--lime); font-style: italic; }
 
-  /* ── PROCESS DETAILS HEADER ─────────────────────────── */
-  .process-section-header {
-    display: flex;
-    align-items: center;
-    gap: 0;
-    margin-bottom: 32px;
-    margin-top: 8px;
-  }
+  .process-section-header { display: flex; align-items: center; gap: 0; margin-bottom: 32px; margin-top: 8px; }
+  .process-section-header span { font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-muted); border-left: 2px solid var(--lime); padding-left: 12px; }
 
-  .process-section-header span {
-    font-family: var(--mono);
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--fg-muted);
-    border-left: 2px solid var(--lime);
-    padding-left: 12px;
-  }
-
-  .ex-attribution a:hover { text-decoration: underline; }
-
-  /* Output formatting helpers */
   .output-body b { color: var(--lime); font-weight: 700; }
   .output-body em { color: var(--fg-mid); font-style: normal; }
-  .output-body .output-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 12px 0;
-    font-family: var(--mono);
-    font-size: 12px;
-  }
-  .output-body .output-table th,
-  .output-body .output-table td {
-    border: 1px solid var(--border-mid);
-    padding: 8px 12px;
-    text-align: left;
-    line-height: 1.5;
-  }
-  .output-body .output-table th {
-    background: var(--bg-panel2);
-    color: var(--lime);
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    font-size: 11px;
-    white-space: nowrap;
-  }
+  .output-body .output-table { width: 100%; border-collapse: collapse; margin: 12px 0; font-family: var(--mono); font-size: 12px; }
+  .output-body .output-table th, .output-body .output-table td { border: 1px solid var(--border-mid); padding: 8px 12px; text-align: left; line-height: 1.5; }
+  .output-body .output-table th { background: var(--bg-panel2); color: var(--lime); font-weight: 700; letter-spacing: 0.06em; font-size: 11px; white-space: nowrap; }
   .output-body .output-table td { color: var(--fg-mid); }
   .output-body .output-table tr:nth-child(even) td { background: var(--bg-panel2); }
 </style>
 </head>
 <body>
 
-<!-- ── NAV ── -->
 <nav>
   <div class="nav-left">
     <span>PIS / V1.0</span>
@@ -804,7 +476,6 @@
   </div>
 </nav>
 
-<!-- ── HERO ── -->
 <section class="hero">
   <div class="container">
     <div class="hero-eyebrow">MODULE 02 — Ownership Mapper: INTERNAL VS EXTERNAL PROCESS STEPS</div>
@@ -819,7 +490,6 @@
   </div>
 </section>
 
-<!-- ── HOW IT WORKS ── -->
 <section class="how">
   <div class="container">
     <div class="section-label">HOW IT WORKS</div>
@@ -846,7 +516,6 @@
   </div>
 </section>
 
-<!-- ── WHAT YOU GET ── -->
 <section class="wyg">
   <div class="container">
     <div class="section-label">WHAT YOU GET</div>
@@ -854,8 +523,8 @@
     <div class="wyg-panels">
       <div class="wyg-panel">
         <div class="panel-layer">
-          Layer 01 — Executive
-          <span class="panel-tag">REALITY CHECK</span>
+          Executive Leadership Diagnosis
+          <span class="panel-tag">FOR VPs AND DIRECTORS</span>
         </div>
         <h3>The reality check.</h3>
         <p>A sharp, board-ready output your VP can drop directly into a QBR or quarterly review. Sequenced for who needs to read it first.</p>
@@ -869,7 +538,7 @@
       </div>
       <div class="wyg-panel">
         <div class="panel-layer">
-          Layer 02 — Team Diagnosis
+          Process Owner Diagnosis
           <span class="panel-tag">FOR YOUR TEAM</span>
         </div>
         <h3>The full gap breakdown, for the people doing the work.</h3>
@@ -886,7 +555,6 @@
   </div>
 </section>
 
-<!-- ── TOOL ── -->
 <section class="tool" id="tool">
   <div class="container">
     <div class="section-label">MODULE 02 — RUN DIAGNOSIS</div>
@@ -928,7 +596,6 @@
       </div>
     </div>
 
-    <!-- Steps table -->
     <div class="steps-table-wrap">
       <table class="steps-table" id="stepsTable">
         <thead>
@@ -1003,17 +670,18 @@
   </div>
 </section>
 
-<!-- ── OUTPUT PANELS ── -->
 <section class="output-section container" id="outputSection">
-  <!-- Layer 01 -->
   <div class="output-panel" id="panel1">
     <div class="output-panel-header">
       <div class="panel-header-left">
-        <span class="panel-sq">■</span>
-        LAYER 01 — EXECUTIVE
+        <div class="panel-header-title">
+          <span class="panel-sq">■</span>
+          <span id="panel1Title">EXECUTIVE LEADERSHIP DIAGNOSIS</span>
+        </div>
+        <div class="panel-header-desc" id="panel1Desc">For VPs and Directors — where the ceiling is and what conversation to have next</div>
       </div>
       <div class="panel-header-right">
-        <span class="output-tag">REALITY CHECK</span>
+        <span class="output-tag" id="panel1Tag">REALITY CHECK</span>
         <button class="copy-btn" id="copyBtn1" onclick="copyPanel('outputText1','copyBtn1','copy_layer1')">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect x="4" y="4" width="9" height="9" rx="0" stroke="currentColor" stroke-width="1.2"/>
@@ -1029,15 +697,17 @@
     </div>
   </div>
 
-  <!-- Layer 02 -->
   <div class="output-panel" id="panel2">
     <div class="output-panel-header">
       <div class="panel-header-left">
-        <span class="panel-sq">■</span>
-        LAYER 02 — TEAM DIAGNOSIS
+        <div class="panel-header-title">
+          <span class="panel-sq">■</span>
+          <span id="panel2Title">PROCESS OWNER DIAGNOSIS</span>
+        </div>
+        <div class="panel-header-desc" id="panel2Desc">For process owners and ops leads — where the gap lives and how to act on it</div>
       </div>
       <div class="panel-header-right">
-        <span class="output-tag">FOR YOUR TEAM</span>
+        <span class="output-tag" id="panel2Tag">FOR YOUR TEAM</span>
         <button class="copy-btn" id="copyBtn2" onclick="copyPanel('outputText2','copyBtn2','copy_layer2')">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect x="4" y="4" width="9" height="9" rx="0" stroke="currentColor" stroke-width="1.2"/>
@@ -1054,23 +724,21 @@
   </div>
 </section>
 
-<!-- ── FOOTER ── -->
 <footer>
   <div class="footer-left">PIS / V1.0 — MODULE 02 — Ownership Mapper: INTERNAL VS EXTERNAL PROCESS STEPS</div>
   <div class="footer-right"><a href="https://www.linkedin.com/in/vikrantsharma10/" target="_blank" rel="noopener">Built by Vikrant Sharma</a></div>
 </footer>
 
 <script>
-  // ── Row management ──────────────────────────────────────
   function deleteRow(btn) {
-    const row = btn.closest('tr');
-    const tbody = document.getElementById('stepsBody');
+    var row = btn.closest('tr');
+    var tbody = document.getElementById('stepsBody');
     if (tbody.rows.length > 1) row.remove();
   }
 
   function addRow() {
-    const tbody = document.getElementById('stepsBody');
-    const tr = document.createElement('tr');
+    var tbody = document.getElementById('stepsBody');
+    var tr = document.createElement('tr');
     tr.innerHTML =
       '<td><input type="text" placeholder="e.g. Legal sends NDA and compliance docs to client"></td>' +
       '<td><input type="text" placeholder="e.g. Legal team"></td>' +
@@ -1079,59 +747,63 @@
       '<td><input type="text" placeholder="e.g. 2 hrs"></td>' +
       '<td><select><option>Manual</option><option>Partially Automated</option><option>Fully Automated</option></select></td>' +
       '<td><select><option>Manual</option><option>Automated</option></select></td>' +
-      '<td class="del-col"><button class="del-btn" onclick="deleteRow(this)">×</button></td>';
+      '<td class="del-col"><button class="del-btn" onclick="deleteRow(this)">x</button></td>';
     tbody.appendChild(tr);
     tr.querySelector('input').focus();
   }
 
-  // ── Collect form data ────────────────────────────────────
   function collectSteps() {
-    const rows = document.querySelectorAll('#stepsBody tr');
-    return Array.from(rows).map(function(row, i) {
-      const inputs = row.querySelectorAll('input');
-      const selects = row.querySelectorAll('select');
-      return {
-        index: i + 1,
-        description: inputs[0].value.trim(),
-        who: inputs[1].value.trim(),
-        ownership: selects[0].value,
-        slaTat: inputs[2].value.trim(),
-        actualTime: inputs[3].value.trim(),
-        stepExecution: selects[1].value,
-        handoffTrigger: selects[2].value,
-      };
-    }).filter(function(r) { return r.description; });
+    var rows = document.querySelectorAll('#stepsBody tr');
+    var result = [];
+    for (var i = 0; i < rows.length; i++) {
+      var row = rows[i];
+      var inputs = row.querySelectorAll('input');
+      var selects = row.querySelectorAll('select');
+      var desc = inputs[0].value.trim();
+      if (desc) {
+        result.push({
+          index: i + 1,
+          description: desc,
+          who: inputs[1].value.trim(),
+          ownership: selects[0].value,
+          slaTat: inputs[2].value.trim(),
+          actualTime: inputs[3].value.trim(),
+          stepExecution: selects[1].value,
+          handoffTrigger: selects[2].value
+        });
+      }
+    }
+    return result;
   }
 
-  // ── Supabase event logging ──────────────────────────────────
-  async function logEvent(eventType) {
+  function logEvent(eventType) {
     fetch('/api/log-event', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ eventType: eventType }),
+      body: JSON.stringify({ eventType: eventType })
     }).catch(function() {});
   }
 
-  // ── Copy panel ───────────────────────────────────────────
   function copyPanel(textId, btnId, eventType) {
-    const text = document.getElementById(textId).innerText + '\n\nBuilt by Vikrant Sharma — https://www.linkedin.com/in/vikrantsharma10/';
+    var text = document.getElementById(textId).innerText + '\n\nBuilt by Vikrant Sharma — https://www.linkedin.com/in/vikrantsharma10/';
     navigator.clipboard.writeText(text).then(function() {
-      const btn = document.getElementById(btnId);
+      var btn = document.getElementById(btnId);
       btn.classList.add('copied');
-      btn.innerHTML =
-        '<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7l4 4 6-6" stroke="#c8f135" stroke-width="1.5" stroke-linecap="square"/></svg> COPIED';
+      btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7l4 4 6-6" stroke="#c8f135" stroke-width="1.5" stroke-linecap="square"/></svg> COPIED';
       logEvent(eventType);
       setTimeout(function() {
         btn.classList.remove('copied');
-        btn.innerHTML =
-          '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="4" width="9" height="9" rx="0" stroke="currentColor" stroke-width="1.2"/><path d="M2 10V2h8" stroke="currentColor" stroke-width="1.2"/></svg> COPY';
+        btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="4" width="9" height="9" rx="0" stroke="currentColor" stroke-width="1.2"/><path d="M2 10V2h8" stroke="currentColor" stroke-width="1.2"/></svg> COPY';
       }, 2000);
     });
   }
 
-  // ── Output rendering ─────────────────────────────────────
   function escapeHtml(str) {
     return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  function renderBold(str) {
+    return str.replace(/\*\*(.+?)\*\*/g, '<b>$1</b>');
   }
 
   function parseTableRow(line) {
@@ -1143,9 +815,9 @@
   }
 
   function buildHtmlTable(lines) {
-    const headerCells = parseTableRow(lines[0]);
-    const dataLines = lines.slice(1).filter(function(l) { return !isSeparatorRow(l); });
-    let t = '<table class="output-table"><thead><tr>';
+    var headerCells = parseTableRow(lines[0]);
+    var dataLines = lines.slice(1).filter(function(l) { return !isSeparatorRow(l); });
+    var t = '<table class="output-table"><thead><tr>';
     headerCells.forEach(function(c) { t += '<th>' + escapeHtml(c.trim()) + '</th>'; });
     t += '</tr></thead><tbody>';
     dataLines.forEach(function(row) {
@@ -1157,67 +829,82 @@
   }
 
   function renderOutput(text) {
-    const lines = text.split('\n');
-    let html = '';
-    let i = 0;
+    var lines = text.split('\n');
+    var html = '';
+    var i = 0;
     while (i < lines.length) {
-      const trimmed = lines[i].trim();
+      var trimmed = lines[i].trim();
       if (trimmed.startsWith('|') && trimmed.endsWith('|')) {
-        const block = [];
+        var block = [];
         while (i < lines.length && lines[i].trim().startsWith('|') && lines[i].trim().endsWith('|')) {
           block.push(lines[i]);
           i++;
         }
         html += buildHtmlTable(block);
       } else {
-        html += escapeHtml(lines[i]) + '\n';
+        html += renderBold(escapeHtml(lines[i])) + '\n';
         i++;
       }
     }
     return html;
   }
 
-  // ── Parse AI output ──────────────────────────────────────
   function parseOutput(text, role) {
-    const isExecutiveFirst = role === 'VP or Director';
-    const l1Match = text.match(/LAYER\s*0?1[:\s\-\u2014]*([\s\S]*?)(?=LAYER\s*0?2|$)/i);
-    const l2Match = text.match(/LAYER\s*0?2[:\s\-\u2014]*([\s\S]*?)(?=LAYER\s*0?1|$)/i);
+    var isExecutiveFirst = role === 'VP or Director';
+    var l1Match = text.match(/LAYER\s*0?1[:\s\-\u2014]*([\s\S]*?)(?=LAYER\s*0?2|$)/i);
+    var l2Match = text.match(/LAYER\s*0?2[:\s\-\u2014]*([\s\S]*?)(?=LAYER\s*0?1|$)/i);
     return {
-      layer1: l1Match ? l1Match[1].trim() : text,
-      layer2: l2Match ? l2Match[1].trim() : '',
+      executive: l1Match ? l1Match[1].trim() : text,
+      team: l2Match ? l2Match[1].trim() : '',
       executiveFirst: isExecutiveFirst
     };
   }
 
-  // ── Main diagnosis ───────────────────────────────────────
+  function setPanelLabels(executiveFirst) {
+    if (executiveFirst) {
+      document.getElementById('panel1Title').textContent = 'EXECUTIVE LEADERSHIP DIAGNOSIS';
+      document.getElementById('panel1Desc').textContent = 'For VPs and Directors — where the ceiling is and what conversation to have next';
+      document.getElementById('panel1Tag').textContent = 'REALITY CHECK';
+      document.getElementById('panel2Title').textContent = 'PROCESS OWNER DIAGNOSIS';
+      document.getElementById('panel2Desc').textContent = 'For process owners and ops leads — where the gap lives and how to act on it';
+      document.getElementById('panel2Tag').textContent = 'FOR YOUR TEAM';
+    } else {
+      document.getElementById('panel1Title').textContent = 'PROCESS OWNER DIAGNOSIS';
+      document.getElementById('panel1Desc').textContent = 'For process owners and ops leads — where the gap lives and how to act on it';
+      document.getElementById('panel1Tag').textContent = 'FOR YOUR TEAM';
+      document.getElementById('panel2Title').textContent = 'EXECUTIVE LEADERSHIP DIAGNOSIS';
+      document.getElementById('panel2Desc').textContent = 'For VPs and Directors — where the ceiling is and what conversation to have next';
+      document.getElementById('panel2Tag').textContent = 'REALITY CHECK';
+    }
+  }
+
   async function runDiagnosis() {
-    const steps = collectSteps();
+    var steps = collectSteps();
     if (steps.length === 0) {
       alert('Please add at least one process step before running the diagnosis.');
       return;
     }
 
-    const processName = document.getElementById('processName').value.trim() || 'Unnamed process';
-    const currentSla = document.getElementById('currentSla').value.trim() || 'Not specified';
-    const userRole = document.getElementById('userRole').value;
-    const parallelMode = document.getElementById('parallelMode').value;
-    const breakPoints = document.getElementById('breakPoints').value.trim();
-    const targetSla = document.getElementById('targetSla').value.trim();
+    var processName = document.getElementById('processName').value.trim() || 'Unnamed process';
+    var currentSla = document.getElementById('currentSla').value.trim() || 'Not specified';
+    var userRole = document.getElementById('userRole').value;
+    var parallelMode = document.getElementById('parallelMode').value;
+    var breakPoints = document.getElementById('breakPoints').value.trim();
+    var targetSla = document.getElementById('targetSla').value.trim();
 
-    const btn = document.getElementById('runBtn');
-    const loader = document.getElementById('loadingIndicator');
-    const errMsg = document.getElementById('errorMsg');
-    const outputSection = document.getElementById('outputSection');
+    var btn = document.getElementById('runBtn');
+    var loader = document.getElementById('loadingIndicator');
+    var errMsg = document.getElementById('errorMsg');
+    var outputSection = document.getElementById('outputSection');
 
     btn.disabled = true;
     btn.textContent = 'RUNNING DIAGNOSIS...';
     loader.classList.add('visible');
     errMsg.classList.remove('visible');
     outputSection.classList.remove('visible');
-
     loader.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 
-    const stepsText = steps.map(function(s) {
+    var stepsText = steps.map(function(s) {
       return 'Step ' + s.index + ': ' + s.description +
         ' | Who: ' + s.who +
         ' | Ownership: ' + s.ownership +
@@ -1227,7 +914,7 @@
         ' | Handoff Trigger: ' + s.handoffTrigger;
     }).join('\n');
 
-    const userPrompt = [
+    var userPrompt = [
       'Process Name: ' + processName,
       'Current SLA: ' + currentSla,
       'Target SLA: ' + (targetSla || 'Not specified'),
@@ -1240,31 +927,31 @@
     ].join('\n');
 
     try {
-      const apiRes = await fetch('/api/diagnose', {
+      var apiRes = await fetch('/api/diagnose', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ userPrompt: userPrompt }),
+        body: JSON.stringify({ userPrompt: userPrompt })
       });
       if (!apiRes.ok) {
-        const errData = await apiRes.json().catch(function() { return {}; });
+        var errData = await apiRes.json().catch(function() { return {}; });
         throw new Error(errData.error || 'Request failed (' + apiRes.status + ')');
       }
-      const data = await apiRes.json();
-      const response = data.text;
+      var data = await apiRes.json();
+      var response = data.text;
 
-      const parsed = parseOutput(response, userRole);
+      var parsed = parseOutput(response, userRole);
+      setPanelLabels(parsed.executiveFirst);
 
       if (parsed.executiveFirst) {
-        document.getElementById('outputText1').innerHTML = renderOutput(parsed.layer1);
-        document.getElementById('outputText2').innerHTML = renderOutput(parsed.layer2 || response);
+        document.getElementById('outputText1').innerHTML = renderOutput(parsed.executive);
+        document.getElementById('outputText2').innerHTML = renderOutput(parsed.team || response);
       } else {
-        document.getElementById('outputText1').innerHTML = renderOutput(parsed.layer2 || response);
-        document.getElementById('outputText2').innerHTML = renderOutput(parsed.layer1);
+        document.getElementById('outputText1').innerHTML = renderOutput(parsed.team || response);
+        document.getElementById('outputText2').innerHTML = renderOutput(parsed.executive);
       }
 
       outputSection.classList.add('visible');
       outputSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
       logEvent('run_diagnosis');
 
     } catch(err) {
